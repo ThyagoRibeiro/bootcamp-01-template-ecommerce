@@ -1,6 +1,7 @@
 package br.com.thyagoribeiro.ecommerce.rest.contract;
 
 import br.com.thyagoribeiro.ecommerce.domain.Categoria;
+import br.com.thyagoribeiro.ecommerce.validator.Exist;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.EntityManager;
@@ -11,6 +12,7 @@ public class NovaCategoriaRequest {
 
     @NotNull
     @JsonProperty("nome")
+    @Exist(domainClass = Categoria.class, fieldName = "nome", expected = false)
     private String nome;
 
     @JsonProperty("categoria_mae")

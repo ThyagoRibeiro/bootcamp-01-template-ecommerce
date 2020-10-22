@@ -1,10 +1,11 @@
 package br.com.thyagoribeiro.ecommerce.rest.contract;
 
+import br.com.thyagoribeiro.ecommerce.domain.Usuario;
+import br.com.thyagoribeiro.ecommerce.validator.Exist;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.*;
-import br.com.thyagoribeiro.ecommerce.domain.Usuario;
 import java.time.LocalDateTime;
 
 public class NovoUsuarioRequest {
@@ -18,6 +19,7 @@ public class NovoUsuarioRequest {
     @JsonProperty("email")
     @NotBlank
     @Email
+    @Exist(domainClass = Usuario.class, fieldName = "email", expected = false)
     private String email;
 
     @JsonProperty("senha")
