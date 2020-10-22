@@ -15,10 +15,10 @@ public class NovoUsuarioRequest {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime instanteCadastro;
 
-    @JsonProperty("login")
+    @JsonProperty("email")
     @NotBlank
     @Email
-    private String login;
+    private String email;
 
     @JsonProperty("senha")
     @NotBlank
@@ -31,7 +31,7 @@ public class NovoUsuarioRequest {
 
     public NovoUsuarioRequest(@NotNull @Future LocalDateTime instanteCriacao, @NotBlank @Email String login, @NotBlank @Size(min = 6) String senha) {
         this.instanteCadastro = instanteCriacao;
-        this.login = login;
+        this.email = login;
         this.senha = senha;
     }
 
@@ -43,12 +43,12 @@ public class NovoUsuarioRequest {
         this.instanteCadastro = instanteCadastro;
     }
 
-    public String getLogin() {
-        return login;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSenha() {
@@ -60,6 +60,6 @@ public class NovoUsuarioRequest {
     }
 
     public Usuario toModel(){
-        return new Usuario(instanteCadastro, login, senha);
+        return new Usuario(instanteCadastro, email, senha);
     }
 }

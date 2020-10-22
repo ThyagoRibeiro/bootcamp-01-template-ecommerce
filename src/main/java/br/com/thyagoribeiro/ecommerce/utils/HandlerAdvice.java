@@ -1,4 +1,4 @@
-package main.java.br.com.thyagoribeiro.ecommerce.utils;
+package br.com.thyagoribeiro.ecommerce.utils;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

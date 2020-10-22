@@ -22,7 +22,7 @@ public class Usuario {
 
     @NotBlank
     @Email
-    private String login;
+    private String email;
 
     @NotBlank
     @Size(min = 6)
@@ -41,7 +41,7 @@ public class Usuario {
 
     public Usuario(@NotNull @Future LocalDateTime instanteCadastro, @NotBlank @Email String login, @NotBlank @Size(min = 6) String senha) {
         this.instanteCadastro = instanteCadastro;
-        this.login = login;
+        this.email = login;
         this.senha = new BCryptPasswordEncoder().encode(senha);
     }
 
@@ -61,12 +61,12 @@ public class Usuario {
         this.instanteCadastro = instanteCadastro;
     }
 
-    public String getLogin() {
-        return login;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSenha() {
