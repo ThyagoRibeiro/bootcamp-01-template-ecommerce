@@ -120,6 +120,6 @@ public class NovoProdutoRequest {
 
         Categoria categoria = entityManager.find(Categoria.class, this.categoriaId);
 
-        return new Produto(nome, valor,quantidade, caracteristicaList, descricao, categoria, instanteCadastro, usuario, null, null);
+        return new Produto(nome, valor,quantidade, caracteristicaList, descricao, categoria, instanteCadastro, usuario);
     }
 }

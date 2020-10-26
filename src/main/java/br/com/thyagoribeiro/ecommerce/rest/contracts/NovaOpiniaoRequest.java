@@ -56,7 +56,7 @@ public class NovaOpiniaoRequest {
         this.descricao = descricao;
     }
 
-    public Opiniao toModel(EntityManager entityManager, Produto produto, Usuario usuario){
+    public Opiniao toModel(Produto produto, Usuario usuario){
         return new Opiniao(nota, titulo, descricao, produto, usuario);
     }
 

@@ -31,7 +31,7 @@ public class NovaOpiniaoController {
             return ResponseEntity.ok().build();
         }
 
-        produto.getOpiniaoList().add(novaOpiniaoRequest.toModel(entityManager, produto, usuarioLogado.getUsuario()));
+        produto.getOpiniaoList().add(novaOpiniaoRequest.toModel(produto, usuarioLogado.getUsuario()));
         entityManager.persist(produto);
 
         return ResponseEntity.ok().build();

@@ -48,11 +48,14 @@ public class Produto {
     @OneToMany(mappedBy = "produto", cascade = CascadeType.PERSIST)
     private List<Opiniao> opiniaoList;
 
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.PERSIST)
+    private List<Pergunta> perguntaList;
+
     @Deprecated
     public Produto() {
     }
 
-    public Produto(@NotEmpty String nome, @NotNull @Positive BigDecimal valor, @NotNull @PositiveOrZero Long quantidade, @Size(min = 3) List<Caracteristica> caracteristicaList, @NotNull @Size(max = 1000) String descricao, @NotNull Categoria categoria, LocalDateTime instanteCadastro, Usuario usuario, List<ImagemProduto> imagemProdutoList, List<Opiniao> opiniaoList) {
+    public Produto(@NotEmpty String nome, @NotNull @Positive BigDecimal valor, @NotNull @PositiveOrZero Long quantidade, @Size(min = 3) List<Caracteristica> caracteristicaList, @NotNull @Size(max = 1000) String descricao, @NotNull Categoria categoria, LocalDateTime instanteCadastro, Usuario usuario) {
         this.nome = nome;
         this.valor = valor;
         this.quantidade = quantidade;
@@ -62,8 +65,6 @@ public class Produto {
         this.categoria = categoria;
         this.instanteCadastro = instanteCadastro;
         this.usuario = usuario;
-        this.imagemProdutoList = imagemProdutoList;
-        this.opiniaoList = opiniaoList;
     }
 
     public Long getId() {
@@ -152,5 +153,13 @@ public class Produto {
 
     public void setOpiniaoList(List<Opiniao> opiniaoList) {
         this.opiniaoList = opiniaoList;
+    }
+
+    public List<Pergunta> getPerguntaList() {
+        return perguntaList;
+    }
+
+    public void setPerguntaList(List<Pergunta> perguntaList) {
+        this.perguntaList = perguntaList;
     }
 }
