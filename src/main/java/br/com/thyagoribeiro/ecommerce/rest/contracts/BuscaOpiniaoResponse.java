@@ -4,15 +4,15 @@ import br.com.thyagoribeiro.ecommerce.domains.Opiniao;
 import br.com.thyagoribeiro.ecommerce.domains.Produto;
 import br.com.thyagoribeiro.ecommerce.domains.Usuario;
 
-import javax.validation.constraints.Max;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-public class NovaOpiniaoRequest {
+public class BuscaOpiniaoResponse {
 
     @Min(1)
-    @Max(5)
+    @Min(5)
     @NotNull
     private Long nota;
 
@@ -22,13 +22,16 @@ public class NovaOpiniaoRequest {
     @NotBlank
     private String descricao;
 
-    public NovaOpiniaoRequest() {
-    }
+    @NotNull
+    @ManyToOne
+    private String username;
 
-    public NovaOpiniaoRequest(@Min(1) @Min(5) @NotNull Long nota, @NotBlank String titulo, @NotBlank String descricao) {
-        this.nota = nota;
-        this.titulo = titulo;
-        this.descricao = descricao;
+
+    public BuscaOpiniaoResponse(Opiniao opiniao) {
+        this.nota = opiniao.getNota();
+        this.titulo = opiniao.getTitulo();
+        this.descricao = opiniao.getDescricao();
+        this.username = opiniao.getUsuario().getEmail();
     }
 
     public Long getNota() {
@@ -55,8 +58,11 @@ public class NovaOpiniaoRequest {
         this.descricao = descricao;
     }
 
-    public Opiniao toModel(Produto produto, Usuario usuario){
-        return new Opiniao(nota, titulo, descricao, produto, usuario);
+    public String getUsername() {
+        return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }

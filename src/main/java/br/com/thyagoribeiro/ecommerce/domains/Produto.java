@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 
 @Entity
@@ -161,5 +162,25 @@ public class Produto {
 
     public void setPerguntaList(List<Pergunta> perguntaList) {
         this.perguntaList = perguntaList;
+    }
+
+    public BigDecimal mediaNotas() {
+        if(this.getOpiniaoList() != null) {
+            double qtdNotas = this.getOpiniaoList().size();
+            double somaNotas = 0L;
+            for (Opiniao opiniao : opiniaoList)
+                somaNotas += opiniao.getNota();
+            return new BigDecimal(somaNotas / qtdNotas);
+        } else {
+            return BigDecimal.valueOf(0);
+        }
+    }
+
+    public Long totalNotas() {
+        if(this.getOpiniaoList() != null) {
+            return Long.valueOf(this.getOpiniaoList().size());
+        } else {
+            return 0L;
+        }
     }
 }
