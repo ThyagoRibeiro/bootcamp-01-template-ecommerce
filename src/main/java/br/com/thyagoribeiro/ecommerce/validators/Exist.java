@@ -1,4 +1,4 @@
-package br.com.thyagoribeiro.ecommerce.validator;
+package br.com.thyagoribeiro.ecommerce.validators;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

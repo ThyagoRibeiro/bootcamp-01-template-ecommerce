@@ -1,4 +1,4 @@
-package br.com.thyagoribeiro.ecommerce.domain;
+package br.com.thyagoribeiro.ecommerce.domains;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

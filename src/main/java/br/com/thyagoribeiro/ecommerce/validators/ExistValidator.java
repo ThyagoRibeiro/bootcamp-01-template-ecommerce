@@ -1,4 +1,4 @@
-package br.com.thyagoribeiro.ecommerce.validator;
+package br.com.thyagoribeiro.ecommerce.validators;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

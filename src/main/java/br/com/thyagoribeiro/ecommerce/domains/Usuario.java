@@ -1,4 +1,4 @@
-package br.com.thyagoribeiro.ecommerce.domain;
+package br.com.thyagoribeiro.ecommerce.domains;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -31,13 +31,6 @@ public class Usuario {
     @Deprecated
     public Usuario() {
     }
-
-    /**
-    *
-    * @param login string no formato email
-    * @param senha string no formato email
-    *
-    * */
 
     public Usuario(@NotNull @Future LocalDateTime instanteCadastro, @NotBlank @Email String login, @NotBlank @Size(min = 6) String senha) {
         this.instanteCadastro = instanteCadastro;

@@ -1,7 +1,7 @@
-package br.com.thyagoribeiro.ecommerce.rest.contract;
+package br.com.thyagoribeiro.ecommerce.rest.contracts;
 
-import br.com.thyagoribeiro.ecommerce.domain.Categoria;
-import br.com.thyagoribeiro.ecommerce.validator.Exist;
+import br.com.thyagoribeiro.ecommerce.domains.Categoria;
+import br.com.thyagoribeiro.ecommerce.validators.Exist;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.EntityManager;

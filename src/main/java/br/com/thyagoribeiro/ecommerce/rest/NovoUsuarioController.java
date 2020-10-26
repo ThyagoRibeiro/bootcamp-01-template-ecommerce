@@ -1,7 +1,7 @@
 package br.com.thyagoribeiro.ecommerce.rest;
 
-import br.com.thyagoribeiro.ecommerce.domain.Usuario;
-import br.com.thyagoribeiro.ecommerce.rest.contract.NovoUsuarioRequest;
+import br.com.thyagoribeiro.ecommerce.domains.Usuario;
+import br.com.thyagoribeiro.ecommerce.rest.contracts.NovoUsuarioRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,7 +25,7 @@ public class NovoUsuarioController {
     public ResponseEntity<?> novoUsuario(@RequestBody @Valid NovoUsuarioRequest novoUsuarioRequest, UriComponentsBuilder uriComponentsBuilder) {
         Usuario usuario = novoUsuarioRequest.toModel();
         entityManager.persist(usuario);
-        URI enderecoConsulta = uriComponentsBuilder.path("/api/usuarios").build(usuario.getId());
+        URI enderecoConsulta = uriComponentsBuilder.path("/api/usuarios/{id}").build(usuario.getId());
         return ResponseEntity.created(enderecoConsulta).build();
     }
 

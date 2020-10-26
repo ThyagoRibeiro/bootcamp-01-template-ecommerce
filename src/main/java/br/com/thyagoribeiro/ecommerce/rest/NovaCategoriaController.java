@@ -1,7 +1,7 @@
 package br.com.thyagoribeiro.ecommerce.rest;
 
-import br.com.thyagoribeiro.ecommerce.domain.Categoria;
-import br.com.thyagoribeiro.ecommerce.rest.contract.NovaCategoriaRequest;
+import br.com.thyagoribeiro.ecommerce.domains.Categoria;
+import br.com.thyagoribeiro.ecommerce.rest.contracts.NovaCategoriaRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,10 +22,11 @@ public class NovaCategoriaController {
 
     @PostMapping("/api/categorias")
     @Transactional
-    public ResponseEntity novaCategoria(@RequestBody @Valid NovaCategoriaRequest novaCategoriaRequest, UriComponentsBuilder uriComponentsBuilder) {
+    public ResponseEntity novaCategoria(@RequestBody @Valid NovaCategoriaRequest novaCategoriaRequest,
+                                        UriComponentsBuilder uriComponentsBuilder) {
         Categoria categoria = novaCategoriaRequest.toModel(entityManager);
         entityManager.persist(categoria);
-        URI enderecoConsulta = uriComponentsBuilder.path("/api/categorias").build(categoria.getId());
+        URI enderecoConsulta = uriComponentsBuilder.path("/api/categorias/{id}").build(categoria.getId());
         return ResponseEntity.created(enderecoConsulta).build();
     }
 
